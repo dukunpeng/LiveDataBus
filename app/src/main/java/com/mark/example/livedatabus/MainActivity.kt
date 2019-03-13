@@ -1,15 +1,16 @@
-package com.mark.konwledge.konwledgestack
+package com.mark.example.livedatabus
 
 import android.arch.lifecycle.Observer
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.mark.example.livedatabus.LiveDataBus
-import com.mark.example.livedatabus.R
-import com.mark.example.livedatabus.SencondActivity
+import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+/**
+ *@author Mark
+ *@Date on 2019/3/13
+ **/
+ class MainActivity: AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         click3.setOnClickListener {
             LiveDataBus.get().post("test2","我是点3")
             click3.postDelayed({
-                startActivity(Intent(application, SencondActivity::class.java))
+                startActivity(Intent(application,SencondActivity::class.java))
             },1000)
         }
         LiveDataBus.get().with("test", String::class.java)
@@ -31,7 +32,6 @@ class MainActivity : AppCompatActivity() {
                 text.text = it
             })
 
+    }
 
-
-}
 }
